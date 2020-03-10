@@ -1158,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f720599cfe9154aba8288d157952ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linked: 0
   speed: 5
   playerId: 2
 --- !u!4 &919734441
@@ -1224,6 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f720599cfe9154aba8288d157952ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linked: 0
   speed: 5
   playerId: 1
 --- !u!61 &1003356835
@@ -1326,7 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf374935d0028c42b0bce9e2b21fc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveRange: 3
+  _effectiveRange: 3
 --- !u!4 &1558630722
 Transform:
   m_ObjectHideFlags: 0
@@ -1348,7 +1350,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558630720}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1380,6 +1382,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: -1.9485431, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: 1, z: 0}
   m_Parameters:
     serializedVersion: 3

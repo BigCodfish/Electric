@@ -25,14 +25,20 @@ public class Retry : MonoBehaviour
         if (_enter1 && Input.GetKeyDown(KeyCode.S))
         {
             gameObject.layer = LayerMask.NameToLayer("Retry");
-            _playerTrans = collision.transform;
+            if(collision.transform.position.x-transform.position.x < 0) transform.position = (Vector2)collision.transform.position + retryPos;
+            else transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x,retryPos.y);
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            transform.parent = collision.transform;
             _lifed = true;
             _enter2 = false;
         }
         if (_enter2 && Input.GetKeyDown(KeyCode.DownArrow))
         {
             gameObject.layer = LayerMask.NameToLayer("Retry");
-            _playerTrans = collision.transform;
+            if (collision.transform.position.x - transform.position.x < 0) transform.position = (Vector2)collision.transform.position + retryPos;
+            else transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x, retryPos.y);
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            transform.parent = collision.transform;
             _lifed = true;
             _enter1 = false;
         }
@@ -53,8 +59,9 @@ public class Retry : MonoBehaviour
         {
             if (_lockTime && _enter1 && Input.GetKeyDown(KeyCode.S))
             {
-                Debug.Log("Down");
                 gameObject.layer = LayerMask.NameToLayer("Default");
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                transform.parent = null;
                 _enter1 = false;
                 _lifed = false;
                 _lockTime = false;
@@ -63,11 +70,13 @@ public class Retry : MonoBehaviour
             {
                 Debug.Log("Down");
                 gameObject.layer = LayerMask.NameToLayer("Default");
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                transform.parent = null;
                 _enter2 = false;
                 _lifed = false;
                 _lockTime = false;
             }
-            transform.position = (Vector2)_playerTrans.position + retryPos;
+            //transform.position = (Vector2)_playerTrans.position + retryPos;
             if (!_lockTime && _lifed) _lockTime = true;
         }
     }

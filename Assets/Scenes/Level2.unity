@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f720599cfe9154aba8288d157952ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linked: 0
   speed: 5
   playerId: 2
 --- !u!4 &747758577
@@ -468,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f720599cfe9154aba8288d157952ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linked: 0
   speed: 5
   playerId: 1
 --- !u!4 &817080947
@@ -1686,7 +1688,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2270497e45341f84ca16e5ada78d53c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1718,7 +1720,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &1807805645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1743,7 +1745,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 0.92}
+  m_Size: {x: 2.56, y: 0.41}
   m_EdgeRadius: 0
 --- !u!114 &1807805646
 MonoBehaviour:
@@ -1787,7 +1789,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861678443}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1819,6 +1821,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: -1.9485431, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: 1, z: 0}
   m_Parameters:
     serializedVersion: 3
@@ -1887,7 +1890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf374935d0028c42b0bce9e2b21fc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveRange: 3
+  _effectiveRange: 3
 --- !u!4 &1861678446
 Transform:
   m_ObjectHideFlags: 0
