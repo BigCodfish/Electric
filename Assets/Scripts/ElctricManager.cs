@@ -8,6 +8,8 @@ public class ElctricManager : MonoBehaviour
     private Transform[] _players;
     private Player[] p;
     private Retry[] _retrys;
+    private float[] _distance1;
+    private float[] _distance2;
     [SerializeField] private float _effectiveRange;
     
     void Start()
@@ -18,6 +20,8 @@ public class ElctricManager : MonoBehaviour
         _retrys = FindObjectsOfType<Retry>();
         _players[0] = p[0].transform;
         _players[1] = p[1].transform;
+        _distance1 = new float[_retrys.Length];
+        _distance2 = new float[_retrys.Length];
     }
 
     
@@ -25,34 +29,38 @@ public class ElctricManager : MonoBehaviour
     {
         if ((_players[0].position - _players[1].position).magnitude < _effectiveRange)
         {
-            _line.enabled = true;
-            _line.SetPosition(0, _players[0].position);
-            _line.SetPosition(1, _players[1].position);
-            _line.SetPosition(2, _players[1].position);
-            p[0].Linked = true;
-            p[1].Linked = true;
+            SetPoints(2);
             return;
         }
         else
         {
             for (int i = 0; i < _retrys.Length; i++)
             {
-                float distance1 = (_retrys[i].transform.position - _players[0].position).magnitude;
-                float distance2 = (_retrys[i].transform.position - _players[1].position).magnitude;
-                if (distance1 < _effectiveRange && distance2 < _effectiveRange)
-                {
-                    _line.enabled = true;
-                    _line.SetPosition(0, _players[0].position);
-                    _line.SetPosition(2, _players[1].position);
-                    _line.SetPosition(1, _retrys[i].transform.position);
-                    p[0].Linked = true;
-                    p[1].Linked = true;
-                    return;
-                }
+                _distance1[i] = (_retrys[i].transform.position - _players[0].position).magnitude;
+                _distance2[i] = (_retrys[i].transform.position - _players[1].position).magnitude;
+            }
+
+            for (int i = 0; i < _retrys.Length; i++)
+            {
+                
             }
         }
         p[0].Linked = false;
         p[1].Linked = false;
         _line.enabled = false;
+    }
+
+    private void SetPoints(int count,params int[] retryId)
+    {
+        _line.enabled = true;
+        _line.positionCount = count;
+        _line.SetPosition(0, _players[0].position);
+        _line.SetPosition(count-1, _players[1].position);
+        for (int i = 1; i <= count-2; i++)
+        {
+            _line.SetPosition(i, _retrys[retryId[i-1]].transform.position);
+        }
+        p[0].Linked = true;
+        p[1].Linked = true;
     }
 }

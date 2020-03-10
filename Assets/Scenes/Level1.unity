@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 821998180}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,36 +927,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &841148934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 841148935}
-  m_Layer: 0
-  m_Name: Ground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &841148935
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841148934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 919734441}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &884452683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1089,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_GroundCheck: {fileID: 841148935}
+  m_GroundCheck: {fileID: 1177311185}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1161,6 +1131,7 @@ MonoBehaviour:
   _linked: 0
   speed: 5
   playerId: 2
+  DustVel: 0
 --- !u!4 &919734441
 Transform:
   m_ObjectHideFlags: 0
@@ -1173,7 +1144,7 @@ Transform:
   m_LocalScale: {x: 0.5032055, y: 0.6393736, z: 0.5635}
   m_Children:
   - {fileID: 884452684}
-  - {fileID: 841148935}
+  - {fileID: 1177311185}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1228,6 +1199,7 @@ MonoBehaviour:
   _linked: 0
   speed: 5
   playerId: 1
+  DustVel: 0
 --- !u!61 &1003356835
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1298,6 +1270,36 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1177311184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177311185}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177311185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177311184}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4939999, z: 0}
+  m_LocalScale: {x: 1.3877035, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919734441}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1558630720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,8 +1465,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889226002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.494, z: 0}
+  m_LocalScale: {x: 1.3877, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1003356833}
   m_RootOrder: 1

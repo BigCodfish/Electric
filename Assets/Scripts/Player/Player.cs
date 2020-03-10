@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _linked;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int playerId;
+    public float DustVel;
     void Start()
     {
         _pm = GetComponent<PlayerMove>();
@@ -45,6 +46,14 @@ public class Player : MonoBehaviour
     public bool Linked
     {
         set { _linked = value; }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            
+        }
     }
 
     private void FixedUpdate()
