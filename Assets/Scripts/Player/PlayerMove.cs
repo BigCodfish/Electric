@@ -104,4 +104,9 @@ public class PlayerMove : MonoBehaviour
         else _animator.SetBool("Run", true);
         _animator.SetBool("jump", jump);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(m_GroundCheck.position, k_GroundedRadius);
+    }
 }

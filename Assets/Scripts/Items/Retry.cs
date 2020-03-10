@@ -68,7 +68,6 @@ public class Retry : MonoBehaviour
             }
             if (_lockTime && _enter2 && Input.GetKeyDown(KeyCode.DownArrow))
             {
-                Debug.Log("Down");
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 transform.parent = null;

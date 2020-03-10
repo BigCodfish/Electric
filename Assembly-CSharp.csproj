@@ -126,6 +126,8 @@
     <Compile Include="Assets\Scripts\ElctricManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameStart.cs" />
+    <Compile Include="Assets\Scripts\Items\BreakCube.cs" />
+    <Compile Include="Assets\Scripts\Items\BreakItem.cs" />
     <Compile Include="Assets\Scripts\Items\Door.cs" />
     <Compile Include="Assets\Scripts\Items\Elevator.cs" />
     <Compile Include="Assets\Scripts\Items\EndPoint.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\TransitionScene.cs" />
+    <None Include="Assets\Materials\ParticleAlphaBlendStroke.shader" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -356,6 +359,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/unity2018.3/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:/Users/dell/Desktop/Electric/Electric/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/dell/Desktop/Electric/Electric/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -364,9 +370,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/dell/Desktop/Electric/Electric/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>C:/Users/dell/Desktop/Electric/Electric/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/unity2018.3/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -10,6 +10,7 @@ public class Switch : MonoBehaviour
         if (collision.gameObject.tag == "Retry")
         {
             targetProp.Function();
+            GetComponent<Animator>().SetTrigger("On");
         }
     }
 }
