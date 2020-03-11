@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     public LayerMask groundMask;                            // 定义哪一个Layer是地面
     public Transform m_GroundCheck;                         // 用于判定地面的空物体
 
+
+    private float _offsetX;             //x轴速度偏移值
     const float k_GroundedRadius = .1f; // 用于检测地面的小圆形的半径
     private bool m_Grounded;            // 当前是否在地面上
     private bool m_FacingRight = true;  // 玩家是否面朝右边
@@ -65,7 +67,7 @@ public class PlayerMove : MonoBehaviour
         if (m_Grounded || canAirControl)
         {
             // 输入变量move决定横向速度
-            m_Rigidbody2D.velocity = new Vector2(move, m_Rigidbody2D.velocity.y);
+            m_Rigidbody2D.velocity = new Vector2(move+_offsetX, m_Rigidbody2D.velocity.y);
 
             // 面朝右时按左键，或面朝左时按右键，都会让角色水平翻转
             if (move > 0 && !m_FacingRight)
@@ -91,11 +93,15 @@ public class PlayerMove : MonoBehaviour
 
     private void Flip()
     {
-        
         m_FacingRight = !m_FacingRight;
 
         // 缩放的x轴乘以-1，图片就水平翻转了
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+    }
+
+    public void SetOffsetX(float x)
+    {
+        _offsetX = x;
     }
 
     private void AnimControl(float move,bool jump)

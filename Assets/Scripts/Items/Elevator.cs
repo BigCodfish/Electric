@@ -7,6 +7,7 @@ public class Elevator : MonoBehaviour
 {
     public Transform[] wayPoints;
     private Vector3 _vol;
+    public float speed;
 
 
     private void Update()
@@ -14,11 +15,11 @@ public class Elevator : MonoBehaviour
         
         if ((transform.position - wayPoints[0].position).magnitude <= 0.01f)
         {
-            _vol = Vector3.down * 0.03f;
+            _vol = Vector3.down * speed;
         }
         if ((transform.position - wayPoints[1].position).magnitude <= 0.01f)
         {
-            _vol = Vector3.up * 0.03f;
+            _vol = Vector3.up * speed;
         }
         transform.Translate(_vol);
     }

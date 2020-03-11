@@ -124,8 +124,10 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\ElctricManager.cs" />
+    <Compile Include="Assets\Scripts\ElectricLine.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameStart.cs" />
+    <Compile Include="Assets\Scripts\Items\Belt.cs" />
     <Compile Include="Assets\Scripts\Items\BreakCube.cs" />
     <Compile Include="Assets\Scripts\Items\BreakItem.cs" />
     <Compile Include="Assets\Scripts\Items\Door.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\TransitionScene.cs" />
     <None Include="Assets\Materials\ParticleAlphaBlendStroke.shader" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
