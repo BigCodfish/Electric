@@ -1605,6 +1605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1558630722}
   - component: {fileID: 1558630721}
+  - component: {fileID: 1558630724}
   - component: {fileID: 1558630723}
   m_Layer: 0
   m_Name: ElectricManager
@@ -1736,6 +1737,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1558630724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558630720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b1e48c00a170649a527826456d04f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomTime: 3
+  scale: 0.1
 --- !u!1 &1889226002
 GameObject:
   m_ObjectHideFlags: 0

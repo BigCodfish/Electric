@@ -281,6 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 131698968}
   - component: {fileID: 131698967}
+  - component: {fileID: 131698969}
   - component: {fileID: 131698966}
   m_Layer: 0
   m_Name: ElectricManager
@@ -412,6 +413,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131698969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131698965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b1e48c00a170649a527826456d04f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomTime: 2
+  scale: 0.1
 --- !u!1 &252439222
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429872084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.49, y: -2.49, z: 0}
+  m_LocalPosition: {x: -2.63, y: -2.49, z: 0}
   m_LocalScale: {x: 0.5786863, y: 0.76724833, z: 0}
   m_Children:
   - {fileID: 487242450}
@@ -1585,6 +1600,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticRetry (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1078436548580044246, guid: 914282b3e989bbf48a8b3ecf726acb2a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1078436548580044269, guid: 914282b3e989bbf48a8b3ecf726acb2a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2172,6 +2192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Retry (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900216668912235150, guid: c73a987711a658248a2362f5c0c46d0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3900216668912235120, guid: c73a987711a658248a2362f5c0c46d0c,
         type: 3}
@@ -3426,6 +3451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StaticRetry
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078436548580044246, guid: 914282b3e989bbf48a8b3ecf726acb2a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1078436548580044269, guid: 914282b3e989bbf48a8b3ecf726acb2a,
         type: 3}

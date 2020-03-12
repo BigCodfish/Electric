@@ -7,7 +7,7 @@ public class Test : MonoBehaviour
     public Transform[] trans;
     void Start()
     {
-        FindObjectOfType<ElectricLine>().SetPoints(trans);
+        //FindObjectOfType<ElectricLine>().SetPoints(trans);
     }
 
     // Update is called once per frame

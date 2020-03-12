@@ -8,17 +8,17 @@ public class ElectricLine : MonoBehaviour
     public int randomTime;
     private int _pointCount;
     public float scale;
-    private Transform[] _pointTrans;
-    public void SetPoints(params Transform[] points)
+    private Vector2[] _pointTrans;
+    public void SetPoints(params Vector2[] points)
     {
         _pointCount = points.Length;
-        Debug.Log(_pointCount);
-        if (_pointTrans == null) _pointTrans = new Transform[_pointCount];
+         _pointTrans = new Vector2[_pointCount];
         for (int i = 0; i < _pointCount; i++)
         {
             _pointTrans[i] = points[i];
         }
     }
+
     private void Start()
     {
         _line = GetComponent<LineRenderer>();
@@ -26,26 +26,26 @@ public class ElectricLine : MonoBehaviour
 
     private void Update()
     {
-        
         int totalLen = 0;
         for (int i = 0; i < _pointCount - 1; i++)
         {
-            Vector2 temp = _pointTrans[i].position;
-            float distance = (_pointTrans[i + 1].position - _pointTrans[i].position).magnitude / randomTime;
-            _line.positionCount = totalLen + 2 + ((int) distance + 1) * randomTime; //line的结点数
+            //Debug.Log($"TotalCount:{totalLen},PointCount:{_pointCount},i:{i}");
+            Vector2 temp = _pointTrans[i];
+            float distance = (_pointTrans[i + 1] - _pointTrans[i]).magnitude / randomTime;
+            _line.positionCount = totalLen + 2 +  randomTime; //line的结点数
 
-            _line.SetPosition(totalLen, _pointTrans[i].position);
-            _line.SetPosition(_line.positionCount - 1, _pointTrans[i + 1].position);
+            _line.SetPosition(totalLen, _pointTrans[i]);
+            _line.SetPosition(_line.positionCount - 1, _pointTrans[i + 1]);
 
-            float distanceX = GetCos(_pointTrans[i + 1].position, _pointTrans[i].position) * distance;
-            float distanceY = GetSin(_pointTrans[i + 1].position, _pointTrans[i].position) * distance;
+            float distanceX = GetCos(_pointTrans[i + 1], _pointTrans[i]) * distance;
+            float distanceY = GetSin(_pointTrans[i + 1], _pointTrans[i]) * distance;
             for (int j = 0; j < randomTime; j++)
             {
                 float ran = Random.Range(0, scale);
                 float ran2= Random.Range(0, scale);
                 _line.SetPosition(totalLen + 1 + j, new Vector2(temp.x + distanceX * j + ran, temp.y + distanceY * j + ran2));
             }
-            totalLen += _line.positionCount;
+            totalLen += (2 + randomTime);
         }
     }
 

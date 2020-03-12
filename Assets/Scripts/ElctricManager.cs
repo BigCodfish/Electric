@@ -4,63 +4,89 @@ using UnityEngine;
 
 public class ElctricManager : MonoBehaviour
 {
-    private LineRenderer _line;
+    [SerializeField] private float _effectiveRange;
+    private ElectricLine _line;
+    private LineRenderer _lineRenderer;
     private Transform[] _players;
     private Player[] p;
-    private Retry[] _retrys;
-    private float[] _distance1;
-    private float[] _distance2;
-    [SerializeField] private float _effectiveRange;
-    
+    [SerializeField] private Retry[] _retrys;
+    private List<Vector2> _linkedPoint;
+    [SerializeField] private List<int> _igoreList;
+
     void Start()
     {
-        _line = GetComponent<LineRenderer>();
+        _igoreList = new List<int>();
+        _lineRenderer = GetComponent<LineRenderer>();
+        _linkedPoint = new List<Vector2>();
+        _line = GetComponent<ElectricLine>();
         _players = new Transform[2];
         p = FindObjectsOfType<Player>();
         _retrys = FindObjectsOfType<Retry>();
         _players[0] = p[0].transform;
         _players[1] = p[1].transform;
-        _distance1 = new float[_retrys.Length];
-        _distance2 = new float[_retrys.Length];
     }
 
     
     void Update()
     {
-        if ((_players[0].position - _players[1].position).magnitude < _effectiveRange)
+        _igoreList.Clear();
+        _linkedPoint.Add(_players[1].position);
+        if (Link(_players[0].position,-1))
         {
-            SetPoints(2);
-            return;
+            _lineRenderer.enabled = true;
+            Debug.Log("LinkedPoint:"+_linkedPoint.Count);
+            p[0].Linked = true;
+            p[1].Linked = true;
+            DrawLine();
+        }
+        else
+        {
+            _lineRenderer.enabled = false;
+            p[0].Linked = false;
+            p[1].Linked = false;
+            ClearLine();
+        }
+        _linkedPoint.Clear();
+    }
+
+    private void DrawLine()
+    {
+        _line.SetPoints(_linkedPoint.ToArray());
+    }
+
+    private void ClearLine()
+    {
+        _line.SetPoints();
+    }
+
+    private bool Link(Vector3 target,int retryId)
+    {
+        Debug.Log($"RetryId::{retryId},ignore:{_igoreList.Count}");
+        if ((target - _players[1].position).magnitude < _effectiveRange)
+        {
+            _linkedPoint.Add(target);
+            return true;
         }
         else
         {
             for (int i = 0; i < _retrys.Length; i++)
             {
-                _distance1[i] = (_retrys[i].transform.position - _players[0].position).magnitude;
-                _distance2[i] = (_retrys[i].transform.position - _players[1].position).magnitude;
-            }
-
-            for (int i = 0; i < _retrys.Length; i++)
-            {
-                
+                if (_igoreList.Contains(i)) continue;
+                Debug.Log($"RetryId:{retryId},{i}:{(_retrys[i].transform.position - target).magnitude}");
+                if ((_retrys[i].transform.position - target).magnitude < _effectiveRange)
+                {
+                    Debug.Log($"RetryId::{retryId},i:{i}");
+                    _igoreList.Add(i);
+                    if (Link(_retrys[i].transform.position,i))
+                    {
+                        _linkedPoint.Add(target);
+                        return true;
+                    }
+                }
             }
         }
-        p[0].Linked = false;
-        p[1].Linked = false;
-        _line.enabled = false;
+        if (_igoreList.Contains(retryId)) _igoreList.Remove(retryId);
+        return false;
     }
-
-    private void SetPoints(int count,params int[] retryId)
-    {
-        _line.enabled = true;
-        _line.positionCount = count;
-        _line.SetPosition(0, _players[0].position);
-        _line.SetPosition(count-1, _players[1].position);
-        for (int i = 1; i <= count-2; i++)
-        {
-            _line.SetPosition(i, _retrys[retryId[i-1]].transform.position);
-        }
-        p[0].Linked = true;
-        p[1].Linked = true;
-    }
+    
 }
