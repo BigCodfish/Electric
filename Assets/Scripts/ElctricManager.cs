@@ -34,7 +34,7 @@ public class ElctricManager : MonoBehaviour
         if (Link(_players[0].position,-1))
         {
             _lineRenderer.enabled = true;
-            Debug.Log("LinkedPoint:"+_linkedPoint.Count);
+            //Debug.Log("LinkedPoint:"+_linkedPoint.Count);
             p[0].Linked = true;
             p[1].Linked = true;
             DrawLine();
@@ -61,7 +61,7 @@ public class ElctricManager : MonoBehaviour
 
     private bool Link(Vector3 target,int retryId)
     {
-        Debug.Log($"RetryId::{retryId},ignore:{_igoreList.Count}");
+        //Debug.Log($"RetryId::{retryId},ignore:{_igoreList.Count}");
         if ((target - _players[1].position).magnitude < _effectiveRange)
         {
             _linkedPoint.Add(target);
@@ -72,10 +72,10 @@ public class ElctricManager : MonoBehaviour
             for (int i = 0; i < _retrys.Length; i++)
             {
                 if (_igoreList.Contains(i)) continue;
-                Debug.Log($"RetryId:{retryId},{i}:{(_retrys[i].transform.position - target).magnitude}");
+                //Debug.Log($"RetryId:{retryId},{i}:{(_retrys[i].transform.position - target).magnitude}");
                 if ((_retrys[i].transform.position - target).magnitude < _effectiveRange)
                 {
-                    Debug.Log($"RetryId::{retryId},i:{i}");
+                    //Debug.Log($"RetryId::{retryId},i:{i}");
                     _igoreList.Add(i);
                     if (Link(_retrys[i].transform.position,i))
                     {

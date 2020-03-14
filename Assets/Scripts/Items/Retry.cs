@@ -22,11 +22,24 @@ public class Retry : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player" && !_enter1 && !_enter2)
+        {
+            if (collision.GetComponent<Player>().ID == 1) _enter1 = true;
+            else if (collision.GetComponent<Player>().ID == 2) _enter2 = true;
+        }
         if (_enter1 && Input.GetKeyDown(KeyCode.S))
         {
             gameObject.layer = LayerMask.NameToLayer("Retry");
-            if(collision.transform.position.x-transform.position.x < 0) transform.position = (Vector2)collision.transform.position + retryPos;
-            else transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x,retryPos.y);
+            if (collision.transform.position.x - transform.position.x < 0)
+            {
+                if (collision.transform.localScale.x < 0) collision.GetComponent<PlayerMove>().Flip();
+                transform.position = (Vector2)collision.transform.position + retryPos;
+            }
+            else
+            {
+                if (collision.transform.localScale.x > 0) collision.GetComponent<PlayerMove>().Flip();
+                transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x, retryPos.y);
+            }
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             transform.parent = collision.transform;
             _lifed = true;
@@ -35,8 +48,16 @@ public class Retry : MonoBehaviour
         if (_enter2 && Input.GetKeyDown(KeyCode.DownArrow))
         {
             gameObject.layer = LayerMask.NameToLayer("Retry");
-            if (collision.transform.position.x - transform.position.x < 0) transform.position = (Vector2)collision.transform.position + retryPos;
-            else transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x, retryPos.y);
+            if (collision.transform.position.x - transform.position.x < 0)
+            {
+                if (collision.transform.localScale.x < 0) collision.GetComponent<PlayerMove>().Flip();
+                transform.position = (Vector2)collision.transform.position + retryPos;
+            }
+            else
+            {
+                if (collision.transform.localScale.x > 0) collision.GetComponent<PlayerMove>().Flip();
+                transform.position = (Vector2)collision.transform.position + new Vector2(-retryPos.x, retryPos.y);
+            }
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             transform.parent = collision.transform;
             _lifed = true;

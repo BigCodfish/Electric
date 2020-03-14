@@ -38,6 +38,7 @@ public class TransitionScene : MonoBehaviour
                 SceneManager.LoadScene("Level7");
                 break;
             default:
+                SceneManager.LoadScene("Level1");
                 break;
         }
     }

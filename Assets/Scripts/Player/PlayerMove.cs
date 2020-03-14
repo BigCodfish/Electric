@@ -9,7 +9,6 @@ public class PlayerMove : MonoBehaviour
     public LayerMask groundMask;                            // 定义哪一个Layer是地面
     public Transform m_GroundCheck;                         // 用于判定地面的空物体
 
-
     private float _offsetX;             //x轴速度偏移值
     const float k_GroundedRadius = .1f; // 用于检测地面的小圆形的半径
     private bool m_Grounded;            // 当前是否在地面上
@@ -21,10 +20,10 @@ public class PlayerMove : MonoBehaviour
 
     private Animator _animator;
     private Rigidbody2D m_Rigidbody2D;
+    private AudioSource _audio;
 
     [Header("Events")]
     [Space]
-
     public UnityEvent OnLandEvent;
 
     [System.Serializable]
@@ -34,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
-
+        _audio = GetComponent<AudioSource>();
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
     }
@@ -83,6 +82,7 @@ public class PlayerMove : MonoBehaviour
         // 在地面时按下跳跃键，就会跳跃
         if (m_Grounded && jump)
         {
+            _audio.Play();
             m_Grounded = false;
             // 施加弹跳力
             m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce));
@@ -91,7 +91,7 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    private void Flip()
+    public void Flip()
     {
         m_FacingRight = !m_FacingRight;
 
@@ -114,5 +114,10 @@ public class PlayerMove : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(m_GroundCheck.position, k_GroundedRadius);
+    }
+
+    public bool Grounded
+    {
+        get { return m_Grounded; }
     }
 }

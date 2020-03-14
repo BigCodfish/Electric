@@ -136,10 +136,10 @@
     <Compile Include="Assets\Scripts\Items\FocusPoint.cs" />
     <Compile Include="Assets\Scripts\Items\Prop.cs" />
     <Compile Include="Assets\Scripts\Items\Retry.cs" />
+    <Compile Include="Assets\Scripts\Items\StartAnim.cs" />
     <Compile Include="Assets\Scripts\Items\Switch.cs" />
     <Compile Include="Assets\Scripts\Items\Trap.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\TransitionScene.cs" />

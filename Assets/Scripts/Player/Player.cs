@@ -13,9 +13,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int playerId;
     public float DustVel;
+    public Animator dustAnimator;
+    private Rigidbody2D rg;
+    public bool _dustPlay;
     void Start()
     {
         _pm = GetComponent<PlayerMove>();
+        rg = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -48,17 +52,21 @@ public class Player : MonoBehaviour
         set { _linked = value; }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void DustPlay()
     {
-        if (collision.gameObject.tag == "Ground")
+        if (_dustPlay)
         {
-            
+            dustAnimator.SetTrigger("Play");
+            _dustPlay = false;
         }
     }
 
+
     private void FixedUpdate()
     {
-        if (!_linked) _timer += Time.deltaTime;
+        if(rg.velocity.y<-DustVel) _dustPlay = true;
+        //Debug.Log(rg.velocity.y < -DustVel);
+        if (!_linked) _timer += Time.deltaTime; 
         else _timer = 0;
         _pm.Move(_move, _jump);
     }
